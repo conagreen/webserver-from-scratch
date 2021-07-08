@@ -15,22 +15,14 @@ import java.util.Map;
  * */
 public class HttpRequest {
 
-    private String requestLine;
-    private String method;
-    private String uri;
-    private Map<String, String> headerMap = new HashMap<>();
-
+    private final RequestLine requestLine;
+    private final Map<String, String> headerMap = new HashMap<>();
     // 생성자
     public HttpRequest(InputStream in) {
         try {
             final BufferedReader br = new BufferedReader(new InputStreamReader(in));
-
-            // 요청 라인 파싱
-            this.requestLine = br.readLine();
-            final String[] tokens = this.requestLine.split(" ");
-            this.method = tokens[0];
-            this.uri =  tokens[1];
-
+            // 요청라인
+            this.requestLine = new RequestLine(br.readLine());
             // 헤더 파싱
             String line;
             while (!(line = br.readLine()).equals("")) {
@@ -38,9 +30,8 @@ public class HttpRequest {
                 final String[] keyAndValue = line.split(":", 2);
                 headerMap.put(keyAndValue[0].trim(), keyAndValue[1].trim());
             }
-
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("IO 문제 발생");
         }
     }
 
@@ -49,20 +40,19 @@ public class HttpRequest {
     }
 
     public HttpMethod httpMethod() {
-        return HttpMethod.valueOf(method);
+        return requestLine.httpMethod();
     }
 
     public String requestUri() {
-        return uri;
+        return requestLine.requestUri();
     }
 
+    // name=value1&number=value2
     public String getQueryString() {
-
-        return null;
+        return requestLine.getQueryString();
     }
 
     public String getParameter(String key) {
-
-        return null;
+        return requestLine.getParameter(key);
     }
 }

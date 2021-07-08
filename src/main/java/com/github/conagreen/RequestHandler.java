@@ -24,6 +24,8 @@ public class RequestHandler implements Runnable {
             System.out.println("request.getHeader(\"Host\") = " + request.getHeader("Host"));
             System.out.println("request.getHeader(\"Accept\") = " + request.getHeader("Accept"));
             System.out.println("request.getHeader(\"User-Agent\") = " + request.getHeader("User-Agent"));
+            System.out.println("request.getQueryString() = " + request.getQueryString());
+            System.out.println("request.getParameter(\"name\") = " + request.getParameter("name"));
 
             // 응답
             final HttpResponse response = new HttpResponse(out);
