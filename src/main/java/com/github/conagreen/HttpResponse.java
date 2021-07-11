@@ -1,8 +1,6 @@
 package com.github.conagreen;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +38,32 @@ public class HttpResponse {
 
         // 바디
         dos.write(body, 0, body.length);
+        dos.flush();
+    }
+
+    public void writeImage(File file) throws IOException {
+        // 응답 라인 : HTTP/1.1 200 OK
+        setStatus(HttpStatus.OK);
+        dos.writeBytes(makeStatusLine());
+
+        // 헤더
+        // 참고: mozilla content type for jpg image [google]
+        // 0. 구현
+        // 1. 왜 Content-Type을 세팅해주어야 하는가?
+        // 2. 왜 Content-Length를 세팅해주어야 하는가?
+        dos.writeBytes("Content-Type: image/jpg\r\n");
+        dos.writeBytes("Content-Length: " + file.length() + "\r\n");
+        dos.writeBytes("\r\n");
+
+        // 바디
+        FileInputStream fis = new FileInputStream(file);
+        final byte[] buffer = new byte[4096];
+        int result = 0;
+
+        while ((result = fis.read(buffer)) != -1) {
+            dos.write(buffer);
+        }
+
         dos.flush();
     }
 

@@ -1,9 +1,6 @@
 package com.github.conagreen;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
@@ -31,15 +28,19 @@ public class RequestHandler implements Runnable {
             // 응답
             final HttpResponse response = new HttpResponse(out);
 
-            final String html = "" +
-                    "<HTML>" +
-                    "<HEAD><TITLE>핸드메이트 웹서버</TITLE></HEAD>" +
-                    "<BODY><h1>제목이시다</h1><p>내용이시다</p></BODY>" +
-                    "</HTML>";
+            // 이미지 그리기
+            final File file = new File("crushed-duck.jpg");
+            response.writeImage(file);
 
-            response.setStatus(HttpStatus.OK);
-            response.addHeader("Content-Type", "text/html;charset=utf-8");
-            response.writeBody(html.getBytes(StandardCharsets.UTF_8));
+//            final String html = "" +
+//                    "<HTML>" +
+//                    "<HEAD><TITLE>핸드메이트 웹서버</TITLE></HEAD>" +
+//                    "<BODY><h1>제목이시다</h1><p>내용이시다</p></BODY>" +
+//                    "</HTML>";
+//
+//            response.setStatus(HttpStatus.OK);
+//            response.addHeader("Content-Type", "text/html;charset=utf-8");
+//            response.writeBody(html.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();
         }
