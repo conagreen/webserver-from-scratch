@@ -9,6 +9,8 @@
     - 파일 쓰기
     - 소켓 (서버 -> 클라)
     
+<br>
+    
 # 2. 자바에서 읽는 방법
 
 - 바이트 (raw)
@@ -17,6 +19,8 @@
 - 문자열 (string)
     - Reader
 - Writer
+
+<br>
 
 # 3. HTTP 프로토콜
 
@@ -79,6 +83,7 @@ Content-Type: application/json\r\n
 
 > 참고 - [위키피디아](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#cite_note-rfc7230-3-21)
 
+<br>
 
 # 4. 응답
 
@@ -99,6 +104,8 @@ Content-Type: application/json\r\n
 
 > 참고 - [위키피디아](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#cite_note-rfc7230-3-21)
 
+<br>
+
 # 5. 문자열 포맷
 
 - 아스키
@@ -106,6 +113,8 @@ Content-Type: application/json\r\n
 
 "ABC".getBytes() 3
 byte[] = 64 65 66 - bytes 9
+
+<br>
 
 # 6. 브라우저에서 이미지 출력하기
 
@@ -117,3 +126,12 @@ byte[] = 64 65 66 - bytes 9
     - MIME 타입이란?
       클라이언트에게 전송된 문서의 다양성을 알려주기 위한 메커니즘이다. 웹에서 파일의 확장자는 별 의미가 없다. 그러므로, 각 문서와 함께 올바른 MIME 타입을 전송하도록, 서버가 정확히 설정하는 것이 중요하다. 브라우저들은 리소스를 내려받았을 때 해야 할 기본 동작이 무엇인지를 결정하기 위해 대게 MIME 타입을 사용한다.
       > 참고 - [MIME 타입](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
+
+<br>
+
+# 7. 패키지 구조
+
+- http
+- webserver
+- controller
+- utils
