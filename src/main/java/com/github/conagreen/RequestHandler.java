@@ -31,27 +31,14 @@ public class RequestHandler implements Runnable {
             // 응답
             final HttpResponse response = new HttpResponse(out);
 
-            final DataOutputStream dos = new DataOutputStream(out);
             final String html = "" +
                     "<HTML>" +
                     "<HEAD><TITLE>핸드메이트 웹서버</TITLE></HEAD>" +
                     "<BODY><h1>제목이시다</h1><p>내용이시다</p></BODY>" +
                     "</HTML>";
-            final int contentLength = html.getBytes().length;
-
-            // 1. 상태 라인 (status line)
-            dos.writeBytes("HTTP/1.1 200 OK\r\n");
-            // 2. 응답 필드 헤더
-            dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
-            dos.writeBytes("Content-Length: " + contentLength + "\r\n");
-            dos.writeBytes("\r\n");
-            // 3. 응답 바디 - optional
-            dos.write(html.getBytes(), 0, contentLength);
-            dos.flush();
 
             response.setStatus(HttpStatus.OK);
             response.addHeader("Content-Type", "text/html;charset=utf-8");
-            response.addHeader("Content-Length", String.valueOf(contentLength));
             response.writeBody(html.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();
