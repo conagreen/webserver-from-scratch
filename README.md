@@ -78,3 +78,21 @@ Content-Type: application/json\r\n
 - an optional message body.
 
 > 참고 - [위키피디아](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#cite_note-rfc7230-3-21)
+
+
+# 4. 응답
+
+1. 상태 라인
+ - HTTP/1.1 200 OK
+2. 응답 헤더 필드
+3. \r\n
+4. 메세지 바디(optional)
+
+### [ 응답 문법 ]
+
+**A server sends response messages to the client**
+
+- a status line, consisting of the protocol version, a space, the response status code, another space, a possibly empty reason phrase, a carriage return, and a line feed (e.g. HTTP/1.1 200 OK);
+- zero or more response header fields, each consisting of the case-insensitive field name, a colon, optional leading whitespace, the field value, and optional trailing whitespace (e.g. Content-Type: text/html), and ending with a carriage return and a line feed;
+- an empty line, consisting of a carriage return and a line feed;
+- an optional message body.                 Z
