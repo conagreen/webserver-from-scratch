@@ -17,6 +17,7 @@ public class HttpRequest {
 
     private final RequestLine requestLine;
     private final Map<String, String> headerMap = new HashMap<>();
+
     // 생성자
     public HttpRequest(InputStream in) {
         try {
