@@ -3,8 +3,8 @@ package com.github.conagreen;
 public enum HttpStatus {
 
     OK(200, "OK"),
-    FOUND(302, "FOUND"),
-    NOT_FOUND(404, "NOT FOUND");
+    FOUND(302, "Found"),
+    NOT_FOUND(404, "NOT Found");
 
     private final int statusCode;
     private final String reasonPhrase;

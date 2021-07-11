@@ -29,8 +29,8 @@ public class RequestHandler implements Runnable {
             final HttpResponse response = new HttpResponse(out);
 
             // 이미지 그리기
-            final File file = new File("crushed-duck.jpg");
-            response.writeImage(file);
+//            final File file = new File("crushed-duck.jpg");
+//            response.writeImage(file);
 
 //            final String html = "" +
 //                    "<HTML>" +
@@ -41,6 +41,7 @@ public class RequestHandler implements Runnable {
 //            response.setStatus(HttpStatus.OK);
 //            response.addHeader("Content-Type", "text/html;charset=utf-8");
 //            response.writeBody(html.getBytes(StandardCharsets.UTF_8));
+            response.sendRedirect("https://www.google.com/");
         } catch (IOException e) {
             e.printStackTrace();
         }

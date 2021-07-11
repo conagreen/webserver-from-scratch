@@ -74,4 +74,15 @@ public class HttpResponse {
     public void setStatus(HttpStatus status) {
         this.status = status;
     }
+
+    /*
+    * HTTP/1.1 302 Found
+    * Location: url
+    * */
+    public void sendRedirect(String url) throws IOException {
+        setStatus(HttpStatus.FOUND);
+        dos.writeBytes(makeStatusLine());
+        dos.writeBytes("Location: " + url + "\r\n");
+        dos.flush();
+    }
 }
