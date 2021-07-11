@@ -1,4 +1,4 @@
-package com.github.conagreen;
+package com.github.conagreen.http.request;
 
 import java.util.Arrays;
 import java.util.HashMap;

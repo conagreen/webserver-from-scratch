@@ -1,5 +1,7 @@
 package com.github.conagreen;
 
+import com.github.conagreen.webserver.RequestHandler;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

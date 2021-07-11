@@ -1,4 +1,4 @@
-package com.github.conagreen;
+package com.github.conagreen.http.response;
 
 public enum HttpStatus {
 

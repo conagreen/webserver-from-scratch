@@ -1,8 +1,10 @@
-package com.github.conagreen;
+package com.github.conagreen.webserver;
+
+import com.github.conagreen.http.request.HttpRequest;
+import com.github.conagreen.http.response.HttpResponse;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 
 public class RequestHandler implements Runnable {
 

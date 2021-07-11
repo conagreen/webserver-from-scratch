@@ -1,4 +1,4 @@
-package com.github.conagreen;
+package com.github.conagreen.http.request;
 
 import java.io.BufferedReader;
 import java.io.IOException;

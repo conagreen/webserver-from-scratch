@@ -1,4 +1,7 @@
-package com.github.conagreen;
+package com.github.conagreen.http.request;
+
+import com.github.conagreen.http.request.HttpMethod;
+import com.github.conagreen.http.request.QueryString;
 
 public class RequestLine {
 
