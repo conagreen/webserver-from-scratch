@@ -1,4 +1,4 @@
-package com.github.conagreen.webserver;
+package com.github.conagreen.webserver.controller;
 
 import com.github.conagreen.controller.Controller;
 import com.github.conagreen.http.request.HttpRequest;

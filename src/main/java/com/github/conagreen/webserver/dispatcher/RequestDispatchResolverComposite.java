@@ -2,7 +2,7 @@ package com.github.conagreen.webserver.dispatcher;
 
 import com.github.conagreen.controller.Controller;
 import com.github.conagreen.http.request.HttpRequest;
-import com.github.conagreen.webserver.NotFoundController;
+import com.github.conagreen.webserver.controller.NotFoundController;
 
 import java.util.ArrayList;
 import java.util.List;
