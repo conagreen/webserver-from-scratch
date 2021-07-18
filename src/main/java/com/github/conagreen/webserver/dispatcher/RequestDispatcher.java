@@ -1,9 +1,7 @@
-package com.github.conagreen.webserver;
+package com.github.conagreen.webserver.dispatcher;
 
 import com.github.conagreen.controller.Controller;
 import com.github.conagreen.http.request.HttpRequest;
-import com.github.conagreen.webserver.dispatcher.RequestDispatchResolver;
-import com.github.conagreen.webserver.dispatcher.RequestDispatchResolverComposite;
 
 /*
 * 책임: request에 맞는 controller를 내려줌

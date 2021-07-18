@@ -3,6 +3,7 @@ package com.github.conagreen.webserver;
 import com.github.conagreen.controller.Controller;
 import com.github.conagreen.http.request.HttpRequest;
 import com.github.conagreen.http.response.HttpResponse;
+import com.github.conagreen.webserver.dispatcher.RequestDispatcher;
 
 import java.io.*;
 import java.net.Socket;
