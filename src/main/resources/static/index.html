@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>메인 페이지</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
 </head>
 <body>
-<h1>스태틱 컨트롤러 연습용 html 파일</h1>
-<p>내용입니다 어쩌구 저쩌구</p>
+<h1>로그인 창 같은거..</h1>
+<form action="/auth" method="post">
+    <label for="username"/>
+    <input id="username" name="username" type="text" placeholder="닉네임을 입력하세요">
+    <label for="password"/>
+    <input id="password" name="password" type="password">
+    <input type="submit" value="로그인">
+</form>
 </body>
 </html>
