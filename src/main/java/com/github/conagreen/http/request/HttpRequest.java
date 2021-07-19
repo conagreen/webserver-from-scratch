@@ -16,7 +16,7 @@ import java.util.Map;
 public class HttpRequest {
 
     private final RequestLine requestLine;
-    private final Map<String, String> headerMap = new HashMap<>();
+    private final RequestHeaders headers;
 
     // 생성자
     public HttpRequest(InputStream in) {
@@ -24,20 +24,15 @@ public class HttpRequest {
             final BufferedReader br = new BufferedReader(new InputStreamReader(in));
             // 요청라인
             this.requestLine = new RequestLine(br.readLine());
-            // 헤더 파싱
-            String line;
-            while (!(line = br.readLine()).equals("")) {
-//                System.out.println(line);
-                final String[] keyAndValue = line.split(":", 2);
-                headerMap.put(keyAndValue[0].trim(), keyAndValue[1].trim());
-            }
+            this.headers = new RequestHeaders(br);
+
         } catch (IOException e) {
             throw new IllegalStateException("IO 문제 발생");
         }
     }
 
     public String getHeader (String headerName) {
-        return this.headerMap.get(headerName);
+        return this.headers.getHeader(headerName);
     }
 
     public HttpMethod httpMethod() {
