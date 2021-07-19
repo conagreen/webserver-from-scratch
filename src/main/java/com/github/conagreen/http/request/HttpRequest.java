@@ -1,5 +1,7 @@
 package com.github.conagreen.http.request;
 
+import com.github.conagreen.http.Cookie;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -72,5 +74,11 @@ public class HttpRequest {
             return param;
         }
         return parameterMap.get(key);
+    }
+
+    // KEY1=VALUE1;
+    // KEY2=VALUE2;
+    public Cookie[] getCookies() {
+        return null;
     }
 }

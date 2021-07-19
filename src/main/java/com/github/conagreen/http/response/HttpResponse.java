@@ -1,5 +1,7 @@
 package com.github.conagreen.http.response;
 
+import com.github.conagreen.http.Cookie;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,5 +60,10 @@ public class HttpResponse {
         dos.writeBytes(makeStatusLine());
         dos.writeBytes("Location: " + url + "\r\n");
         dos.flush();
+    }
+
+    // Set-Cookie: KEY1=VALUE1; KEY2=VALUE2
+    public void addCookie(Cookie cookie) {
+
     }
 }
