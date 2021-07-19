@@ -7,15 +7,42 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous">
     </script>
+    <style>
+        body {
+            text-align: center;
+            margin: auto;
+        }
+
+        .wrap {
+            margin-top: 40px;
+        }
+
+        input {
+            margin-bottom: 5px;
+            width: 145px;
+            box-sizing: border-box;
+        }
+
+        .button-login {
+            margin-top: 13px;
+            width: 145px;
+            background: seagreen;
+            color: aliceblue;
+        }
+    </style>
 </head>
 <body>
-<h1>로그인 창 같은거..</h1>
-<form action="/auth" method="post">
-    <label for="username"/>
-    <input id="username" name="username" type="text" placeholder="닉네임을 입력하세요">
-    <label for="password"/>
-    <input id="password" name="password" type="password">
-    <input type="submit" value="로그인">
-</form>
+<div class="wrap">
+    <h1 class="title">로그인</h1>
+    <form action="/auth" method="post">
+        <label for="username"></label>
+        <input id="username" name="username" type="text" placeholder="닉네임을 입력하세요">
+        <br>
+        <label for="password"></label>
+        <input id="password" name="password" type="password">
+        <br>
+        <input class="button-login" type="submit" value="로그인">
+    </form>
+</div>
 </body>
 </html>
