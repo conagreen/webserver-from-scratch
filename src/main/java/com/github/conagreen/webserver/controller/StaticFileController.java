@@ -3,10 +3,9 @@ package com.github.conagreen.webserver.controller;
 import com.github.conagreen.controller.Controller;
 import com.github.conagreen.http.request.HttpRequest;
 import com.github.conagreen.http.response.HttpResponse;
+import com.github.conagreen.utils.FileReadUtil;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,15 +38,6 @@ public class StaticFileController implements Controller {
         final String ext = request.requestUri().substring(lastIdx + 1);
         final String mime = EXTENSION_MAP.get(ext);
         response.addHeader("Content-Type", mime);
-
-        final InputStream fileInputStream = this.getClass().getClassLoader().getResourceAsStream(filepath);
-        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        final byte[] buffer = new byte[65535];
-        int readBytes;
-        while ((readBytes = fileInputStream.read(buffer)) != -1) {
-            baos.write(buffer, 0, readBytes);
-        }
-
-        response.writeBody(baos.toByteArray());
+        response.writeBody(FileReadUtil.readFileFromClasspath(filepath));
     }
 }
