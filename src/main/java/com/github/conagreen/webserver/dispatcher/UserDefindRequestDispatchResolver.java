@@ -2,6 +2,7 @@ package com.github.conagreen.webserver.dispatcher;
 
 import com.github.conagreen.controller.Controller;
 import com.github.conagreen.controller.HelloController;
+import com.github.conagreen.controller.UserSignInController;
 import com.github.conagreen.http.request.HttpMethod;
 import com.github.conagreen.http.request.HttpRequest;
 
@@ -17,6 +18,7 @@ public class UserDefindRequestDispatchResolver implements RequestDispatchResolve
 
     static {
         DISPATCHER_MAP.put(new RequestKey("/hello", HttpMethod.GET), new HelloController());
+        DISPATCHER_MAP.put(new RequestKey("/auth", HttpMethod.POST), new UserSignInController());
     }
 
     @Override
