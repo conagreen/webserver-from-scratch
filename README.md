@@ -112,6 +112,7 @@ Content-Type: application/json\r\n
 - 유니코드
 
 "ABC".getBytes() 3
+
 byte[] = 64 65 66 - bytes 9
 
 <br>
@@ -120,7 +121,7 @@ byte[] = 64 65 66 - bytes 9
 
 1. 파일을 연다.
 2. 헤더 정보를 세팅한다. 
-    - Content-Type: Content-Type: image/jpg
+    - Content-Type: image/jpg
 3. FileInputStream을 클라이언트의 OutputStream에 쏴줌
 4. MIME 타입은 왜 필요할까? 
     - MIME 타입이란?
@@ -135,3 +136,14 @@ byte[] = 64 65 66 - bytes 9
 - webserver
 - controller
 - utils
+
+# 8. 세션과 쿠키
+
+###**[ to do ]**
+
+1. request에서 쿠키 읽기
+2. response에서 쿠키 응답
+> 참고 - [HTTP 쿠키](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)
+3. MIME type 클래스 -> 리팩터링 (optional)
+4. localhost:8080 -> / 경로 (optional)
+5. form 파싱하는 부분 리팩터링 (optional)
