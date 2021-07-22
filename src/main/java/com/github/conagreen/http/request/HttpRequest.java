@@ -1,6 +1,7 @@
 package com.github.conagreen.http.request;
 
 import com.github.conagreen.http.Cookie;
+import com.github.conagreen.http.session.HttpSession;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -93,5 +94,13 @@ public class HttpRequest {
     // KEY2=VALUE2;
     public Cookie[] getCookies() {
         return cookies;
+    }
+
+    public HttpSession getSession() {
+        return null;
+    }
+
+    public HttpSession getSession(boolean create) {
+        return null;
     }
 }

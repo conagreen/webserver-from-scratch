@@ -11,6 +11,10 @@ public class HelloController implements Controller {
 
     @Override
     public void process(HttpRequest request, HttpResponse response) throws IOException {
+        // JSESSIONID=KS2N3D222DD3K234L32JL3S34K2F4LDS
+        // 세션 키 이름
+        // 세션 값 UUID.randomUUID().toString()
+
         final String html = "{\"message\": \"Hello Web Server.\"}";
         response.setStatus(HttpStatus.OK);
         response.addHeader("Content-Type", "application/json;charset=utf-8");
