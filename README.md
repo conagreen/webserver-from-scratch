@@ -139,11 +139,33 @@ byte[] = 64 65 66 - bytes 9
 
 # 8. 세션과 쿠키
 
-###**[ to do ]**
+### **[ to do ]**
 
-1. request에서 쿠키 읽기
-2. response에서 쿠키 응답
+1. request에서 쿠키 읽기 (완료) 
+2. response에서 쿠키 응답 (완료)
 > 참고 - [HTTP 쿠키](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)
 3. MIME type 클래스 -> 리팩터링 (optional)
 4. localhost:8080 -> / 경로 (optional)
 5. form 파싱하는 부분 리팩터링 (optional)
+
+# 9. 요청과 응답
+
+클라 요청 -> | [request] - [중간 처리] - [response] | -> 클라에 응답
+
+# 10. 세션 만들기
+
+1. key 이름 결정, value 생성 결정 (UUID, randomUUID.toString())
+2. session.setAttribute("user", "e589345c-000e-44cc-8e5c-5d5abbad8c25")
+
+### [ 세션 상황 ]
+1. 웹서버가 해주도록
+   - Set-Cookie: JSESSIONID=8DC7E80E37B584E94187DEEEEE9F4E47;
+2. Map<KEY, SESSION>
+3. session = map.get("8DC7E80E37B584E94187DEEEEE9F4E47")
+4. session.setAttribute("user", "e589345c-000e-44cc-8e5c-5d5abbad8c25")
+- 크롬
+    - JSESSIONID=8DC7E80E37B584E94187DEEEEE9F4E47
+    - user=e589345c-000e-44cc-8e5c-5d5abbad8c25
+- 엣지 
+    - JSESSIONID=8DC7E80E37B584E94187DEEEEE9F4E47
+    - user=34b01842-21f5-4876-bc32-f067517e8165
