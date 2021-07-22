@@ -21,6 +21,7 @@ public class HttpRequest {
     private final RequestLine requestLine;
     private final RequestHeaders headers;
     private final Map<String, String> parameterMap = new HashMap<>();
+    private final Cookie[] cookies;
 
     // 생성자
     public HttpRequest(InputStream in) {
@@ -28,6 +29,7 @@ public class HttpRequest {
             final BufferedReader br = new BufferedReader(new InputStreamReader(in));
             this.requestLine = new RequestLine(br.readLine());
             this.headers = new RequestHeaders(br);
+            this.cookies = parseCookieFromRequest();
 
             final String contentType = headers.getHeader("Content-Type");
             final String lengthHeaderValue = headers.getHeader("Content-Length");
@@ -49,6 +51,17 @@ public class HttpRequest {
         } catch (IOException e) {
             throw new IllegalStateException("IO 문제 발생");
         }
+    }
+
+    private Cookie[] parseCookieFromRequest() {
+        final String raw = this.headers.getHeader("Cookie");
+        final String[] rawCookies = raw.split(";");
+        final Cookie[] cookies = new Cookie[rawCookies.length];
+        for (int i = 0; i < rawCookies.length; i++) {
+            final String[] keyAndValue = rawCookies[i].split("=");
+            cookies[i] = new Cookie(keyAndValue[0].trim(), keyAndValue[1].trim());
+        }
+        return cookies;
     }
 
     public String getHeader (String headerName) {
@@ -79,6 +92,6 @@ public class HttpRequest {
     // KEY1=VALUE1;
     // KEY2=VALUE2;
     public Cookie[] getCookies() {
-        return null;
+        return cookies;
     }
 }
