@@ -3,7 +3,9 @@ package com.github.conagreen.http.response;
 import com.github.conagreen.http.Cookie;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -17,6 +19,7 @@ public class HttpResponse {
     private final DataOutputStream dos;
     public HttpStatus status = HttpStatus.OK;
     private final Map<String, String> responseHeaderMap = new HashMap<>();
+    private final List<Cookie> cookies = new ArrayList<>();
 
     // 생성자
     public HttpResponse(OutputStream out) {
@@ -36,6 +39,13 @@ public class HttpResponse {
             dos.writeBytes(String.format("%s: %s\r\n", entry.getKey(), entry.getValue()));
         }
         dos.writeBytes("Content-Length: " + body.length + "\r\n");
+
+        if (!cookies.isEmpty()) {
+            for (Cookie cookie : cookies) {
+                dos.writeBytes("Set-Cookie: " + cookie.serialize() + "\r\n");
+            }
+        }
+
         dos.writeBytes("\r\n");
 
         // 바디
@@ -64,6 +74,6 @@ public class HttpResponse {
 
     // Set-Cookie: KEY1=VALUE1; KEY2=VALUE2
     public void addCookie(Cookie cookie) {
-
+        cookies.add(cookie);
     }
 }
