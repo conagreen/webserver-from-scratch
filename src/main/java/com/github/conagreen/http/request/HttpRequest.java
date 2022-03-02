@@ -18,7 +18,6 @@ import java.util.Map;
  * 3. 바디(optional)
  * */
 public class HttpRequest {
-
     private final RequestLine requestLine;
     private final RequestHeaders headers;
     private final Map<String, String> parameterMap = new HashMap<>();
@@ -47,26 +46,27 @@ public class HttpRequest {
                             });
                 }
             }
-
-
         } catch (IOException e) {
             throw new IllegalStateException("IO 문제 발생");
         }
     }
 
     private Cookie[] parseCookieFromRequest() {
-        final String raw = this.headers.getHeader("Cookie");
-        final String[] rawCookies = raw.split(";");
-        final Cookie[] cookies = new Cookie[rawCookies.length];
-        for (int i = 0; i < rawCookies.length; i++) {
-            final String[] keyAndValue = rawCookies[i].split("=");
-            cookies[i] = new Cookie(keyAndValue[0].trim(), keyAndValue[1].trim());
+        final String raw = headers.getHeader("Cookie");
+        if (raw != null) {
+            final String[] rawCookies = raw.split(";");
+            final Cookie[] cookies = new Cookie[rawCookies.length];
+            for (int i = 0; i < rawCookies.length; i++) {
+                final String[] keyAndValue = rawCookies[i].split("=");
+                cookies[i] = new Cookie(keyAndValue[0].trim(), keyAndValue[1].trim());
+            }
+            return cookies;
         }
-        return cookies;
+        return new Cookie[0];
     }
 
     public String getHeader (String headerName) {
-        return this.headers.getHeader(headerName);
+        return headers.getHeader(headerName);
     }
 
     public HttpMethod httpMethod() {
@@ -77,7 +77,6 @@ public class HttpRequest {
         return requestLine.requestUri();
     }
 
-    // name=value1&number=value2
     public String getQueryString() {
         return requestLine.getQueryString();
     }
@@ -94,6 +93,13 @@ public class HttpRequest {
     // KEY2=VALUE2;
     public Cookie[] getCookies() {
         return cookies;
+    }
+
+    public Cookie getCookie(String cookieName) {
+        return Arrays.stream(cookies)
+                .filter(cookie -> cookie.getKey().equals(cookieName))
+                .findFirst()
+                .orElse(null);
     }
 
     public HttpSession getSession() {
