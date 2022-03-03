@@ -20,11 +20,9 @@ public class RequestHandler implements Runnable {
     @Override
     public void run() {
         try (final InputStream in = socket.getInputStream(); final OutputStream out = socket.getOutputStream()) {
-            // 요청
             final HttpRequest request = new HttpRequest(in);
-            // 응답
             final HttpResponse response = new HttpResponse(out);
-
+            RequestContextHolder.set(request, response);
             final Controller controller = DISPATCHER.dispatch(request);
             controller.process(request, response);
         } catch (IOException e) {
