@@ -27,13 +27,10 @@ public class SessionManager {
 
     private HttpSession getSession(HttpRequest request, HttpResponse response) {
         final Cookie cookie = request.getCookie(SESSION_NAME);
-        if (cookie != null) {
-            return Optional
-                    .ofNullable(sessionMap.get(cookie.getValue()))
-                    .orElseGet(() -> createSession(response));
-        } else {
-            return createSession(response);
-        }
+        if (cookie != null) return Optional
+                .ofNullable(sessionMap.get(cookie.getValue()))
+                .orElseGet(() -> createSession(response));
+        else return createSession(response);
     }
 
     private HttpSession createSession(HttpResponse response) {
