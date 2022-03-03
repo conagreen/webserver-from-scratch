@@ -2,6 +2,9 @@ package com.github.conagreen.http.request;
 
 import com.github.conagreen.http.Cookie;
 import com.github.conagreen.http.session.HttpSession;
+import com.github.conagreen.http.session.SessionManager;
+import com.github.conagreen.webserver.RequestContext;
+import com.github.conagreen.webserver.RequestContextHolder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +25,7 @@ public class HttpRequest {
     private final RequestHeaders headers;
     private final Map<String, String> parameterMap = new HashMap<>();
     private final Cookie[] cookies;
+    private HttpSession httpSession;
 
     // 생성자
     public HttpRequest(InputStream in) {
@@ -103,10 +107,14 @@ public class HttpRequest {
     }
 
     public HttpSession getSession() {
-        return null;
+        return getSession(true);
     }
 
     public HttpSession getSession(boolean create) {
-        return null;
+        if (create && httpSession == null) {
+            final RequestContext requestContext = RequestContextHolder.get();
+            this.httpSession = SessionManager.getHttpSession(requestContext.getRequest(), requestContext.getResponse());
+        }
+        return httpSession;
     }
 }

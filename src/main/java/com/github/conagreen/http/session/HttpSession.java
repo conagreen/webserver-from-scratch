@@ -1,25 +1,30 @@
 package com.github.conagreen.http.session;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class HttpSession {
 
-    // JSESSIONID=KS2N3D222DD3K234L32JL3S34K2F4LDS
+    private final String id;
+    private final Map<String, Object> attributes = new HashMap<>();
+
+    public HttpSession(String id) {
+        this.id = id;
+    }
+
     public String getId() {
-        return "";
+        return id;
     }
 
     public Object getAttribute(String key) {
-        return null;
+        return attributes.get(key);
     }
 
     public void setAttribute(String key, Object value) {
-
+        attributes.put(key, value);
     }
 
-    /**
-     * 1. 서버의 세션 저장소에서 세션 무효화
-     * 2. 클라의 세션 값 삭제 (max-age=0)
-     */
     public void invalidate() {
-
+        SessionManager.remove(id);
     }
 }
