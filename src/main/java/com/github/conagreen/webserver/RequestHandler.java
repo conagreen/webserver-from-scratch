@@ -25,6 +25,7 @@ public class RequestHandler implements Runnable {
             RequestContextHolder.set(request, response);
             final Controller controller = DISPATCHER.dispatch(request);
             controller.process(request, response);
+            RequestContextHolder.clearContext();
         } catch (IOException e) {
             e.printStackTrace();
         }

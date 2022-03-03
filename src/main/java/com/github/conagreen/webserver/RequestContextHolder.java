@@ -14,4 +14,8 @@ public class RequestContextHolder {
     public static void set(HttpRequest request, HttpResponse response) {
         REQUEST_CONTEXT_THREAD_LOCAL.set(new RequestContext(request, response));
     }
+
+    public static void clearContext() {
+        REQUEST_CONTEXT_THREAD_LOCAL.remove();
+    }
 }
