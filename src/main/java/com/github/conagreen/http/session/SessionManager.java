@@ -30,7 +30,7 @@ public class SessionManager {
         if (cookie != null) {
             return Optional
                     .ofNullable(sessionMap.get(cookie.getValue()))
-                    .orElse(createSession(response));
+                    .orElseGet(() -> createSession(response));
         } else {
             return createSession(response);
         }
@@ -40,7 +40,7 @@ public class SessionManager {
         final HttpSession httpSession = new HttpSession(UUID.randomUUID().toString());
         sessionMap.put(httpSession.getId(), httpSession);
         final Cookie cookie = new Cookie(SESSION_NAME, httpSession.getId());
-        cookie.setMaxAge(86400);
+        cookie.setMaxAge(60);
         response.addCookie(cookie);
         return httpSession;
     }
