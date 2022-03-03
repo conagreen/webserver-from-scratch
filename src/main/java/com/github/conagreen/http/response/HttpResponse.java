@@ -68,6 +68,11 @@ public class HttpResponse {
     public void sendRedirect(String url) throws IOException {
         setStatus(HttpStatus.FOUND);
         dos.writeBytes(makeStatusLine());
+        if (!cookies.isEmpty()) {
+            for (Cookie cookie : cookies) {
+                dos.writeBytes("Set-Cookie: " + cookie.serialize() + "\r\n");
+            }
+        }
         dos.writeBytes("Location: " + url + "\r\n");
         dos.flush();
     }
