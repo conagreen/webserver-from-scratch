@@ -22,7 +22,8 @@ public class RequestHandler implements Runnable {
         try (final InputStream in = socket.getInputStream(); final OutputStream out = socket.getOutputStream()) {
             final HttpRequest request = new HttpRequest(in);
             final HttpResponse response = new HttpResponse(out);
-            RequestContextHolder.set(request, response);
+            final RequestContext context = new RequestContext(request, response);
+            RequestContextHolder.setRequestContext(context);
             final Controller controller = DISPATCHER.dispatch(request);
             controller.process(request, response);
             RequestContextHolder.clearContext();
