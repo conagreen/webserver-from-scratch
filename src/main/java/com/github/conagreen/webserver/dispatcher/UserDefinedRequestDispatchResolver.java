@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 사용자가 정의한 컨트롤러를 dispatching 해주는 resolver
  */
-public class UserDefindRequestDispatchResolver implements RequestDispatchResolver{
+public class UserDefinedRequestDispatchResolver implements RequestDispatchResolver{
 
     private static final Map<RequestKey, Controller> DISPATCHER_MAP = new HashMap<>();
 

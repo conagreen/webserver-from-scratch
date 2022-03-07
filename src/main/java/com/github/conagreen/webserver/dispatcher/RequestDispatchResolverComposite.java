@@ -13,7 +13,7 @@ public class RequestDispatchResolverComposite implements RequestDispatchResolver
     private static final Controller notFoundController = new NotFoundController();
 
     public RequestDispatchResolverComposite() {
-        resolvers.add(new UserDefindRequestDispatchResolver());
+        resolvers.add(new UserDefinedRequestDispatchResolver());
         resolvers.add(new StaticFileRequestDispatchResolver());
     }
 
