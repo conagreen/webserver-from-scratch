@@ -78,4 +78,66 @@
   - junit5를 이용한 단위 테스트 (진행 중)
     - Cookie 생성 및 요청 라인 객체 테스트
     - DispatchResolver 메서드 테스트
-    
+
+<br>
+
+## Directory Structure
+```
+src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── github
+    │   │           └── conagreen
+    │   │               ├── controller
+    │   │               │    ├── Controller.java   
+    │   │               │    ├── HelloController.java
+    │   │               │    └── UserSignInController.java
+    │   │               ├── http
+    │   │               │    ├── request
+    │   │               │    │   ├── HttpMethod.java   
+    │   │               │    │   ├── HttpRequest.java
+    │   │               │    │   ├── QueryString.java
+    │   │               │    │   ├── RequestHeaders.java
+    │   │               │    │   └── RequestLine.java
+    │   │               │    ├── response
+    │   │               │    │   ├── HttpResponse.java
+    │   │               │    │   └── HttpStatus.java
+    │   │               │    ├── session
+    │   │               │    │   ├── HttpSession.java
+    │   │               │    │   └── SessionManager.java
+    │   │               │    └── Cookie.java
+    │   │               ├── utils
+    │   │               │    └── FileReadUtil.java
+    │   │               ├── webserver
+    │   │               │    ├── controller
+    │   │               │    │   ├── NotFoundController.java   
+    │   │               │    │   └── StaticFileController.java
+    │   │               │    ├── dispatcher
+    │   │               │    │   ├── RequestDispatcher.java
+    │   │               │    │   ├── RequestDispatchResolver.java
+    │   │               │    │   ├── RequestDispatchResolverComposite.java
+    │   │               │    │   ├── RequestKey.java
+    │   │               │    │   ├── StaticFileRequestDispatchResolver.java
+    │   │               │    │   └── UserDefindRequestDispatchResolver.java
+    │   │               │    ├── RequestContext.java
+    │   │               │    ├── RequestContextHolder.java
+    │   │               │    ├── RequestHandler.java
+    │   │               │    └── WebServer.java
+    │   │               └── Application.java           
+    │   └── resources
+    │       └── static
+    │           ├── 404.html
+    │           └── index.html
+    └── test
+        └── java
+            └── com
+                └── github
+                    └── conagreen
+                        ├── http
+                        │   └── CookieTest.java
+                        ├── webserver
+                        │   └── dispatcher
+                        │       └── UserDefindRequestDispatchResolverTest.java
+                        └── RequestLineTest.java
+```
