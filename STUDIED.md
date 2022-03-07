@@ -18,7 +18,7 @@
     - OutputStream
 - 문자열 (string)
     - Reader
-- Writer
+    - Writer
 
 <br>
 
@@ -35,13 +35,10 @@ Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7\r\n
 ```
 
 ## 3.1. 요청라인의 구조
-
-- **아래 주소로 브라우저에 입력**
-- http://localhost:8080/
-
-
-- **요청 라인은 다음과 같이 구성됨**
-- GET / HTTP/1.1\r\n
+1. **아래 주소로 브라우저에 입력**
+2. http://localhost:8080/
+3. **요청 라인은 다음과 같이 구성됨**
+4. GET / HTTP/1.1\r\n
     * GET - request method 
     * / - request target (path, uri)
     * HTTP/1.1 - protocol version
