@@ -1,9 +1,19 @@
-# [ HTTP Web Server ]
-**바닥부터 작성해 본 HTTP 스펙을 구현한 WAS (개인 프로젝트)**
+<div align="center">
+
+<h1> [ HTTP Web Server ] </h1>
+
+<b>바닥부터 작성해 본 HTTP 스펙을 구현한 WAS</b>
+
+</div>
+
+<br>
+
 - 웹 서버의 동작을 이해하기 위해 HTTP 스펙을 구현하고, 이를 이용해 세션 방식의 로그인 API 구현
 - 구현에 필요한 최소한의 내용: https://github.com/conagreen/webserver-from-scratch/blob/main/STUDIED.md
 - 개발 기간: 2021.07.06 ~ 현재 (웹 서버 구현은 끝났으나 테스트 코드 추가 작성 중)
 - JDK 1.8 / Junit 5
+
+<br>
 
 ## 개발 내용
 - RFC 2616 스펙을 만족하는 HTTP request parser
